@@ -2,6 +2,7 @@ package models
 
 import (
 	"fmt"
+	"mashiromashi/gotest/util"
 
 	"github.com/spf13/viper"
 	"gorm.io/driver/postgres"
@@ -9,8 +10,7 @@ import (
 )
 
 func SetupModels() *gorm.DB {
-	viper.SetConfigFile("app.env")
-	viper.ReadInConfig()
+	util.LoadConfig(".")
 	viper_user := viper.Get("POSTGRES_USER")
 	viper_password := viper.Get("POSTGRES_PASSWORD")
 	viper_db := viper.Get("POSTGRES_DB")
